@@ -11,6 +11,10 @@ namespace WindowsFormsApplication1
     {
         private static string ConnectStr = "Data Source=dt.db;failifmissing=false";
 
+        public static void SetDBPath(string name,string path)
+        {
+            ConnectStr = "Data Source=" + path + name + ".db;failifmissing=false";
+        }
         /// <summary>
         /// 检查目录下是否存在同名数据库，如不存在则创建，如存在则清空之前的数据
         /// </summary>
@@ -19,7 +23,7 @@ namespace WindowsFormsApplication1
         /// <returns></returns>
         public static bool CheckDB(string name,string path)
         {
-            ConnectStr = "Data Source="+ path + name + ".db;failifmissing=false";
+            SetDBPath(name, path);
 
             string sql = "DROP TABLE IF EXISTS \"dt\";CREATE TABLE \"dt\" (\"id\"  TEXT NOT NULL,\"z\"  INTEGER DEFAULT 0,\"x\"  INTEGER DEFAULT 0,\"y\"  INTEGER DEFAULT 0,\"d\"  INTEGER DEFAULT 0,PRIMARY KEY (\"id\")); ";
 

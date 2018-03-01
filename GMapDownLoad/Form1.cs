@@ -220,6 +220,11 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (chackBasePath() == false)
+            {
+                MessageBox.Show("输入的路径不存在或名称为空");
+                return;
+            }
             if (CheckFlag() == false)
             {
                 MessageBox.Show("输入的标记位数据不正确");
@@ -231,6 +236,8 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("输入的路径不存在或名称为空");
                 return;
             }
+
+            DBHelper.SetDBPath(basename, basepath);
 
             timer1.Start();
 
