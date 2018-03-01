@@ -6,8 +6,8 @@
 * 找工具确实花费了不少的时间，最后还不如自己写一个，功能极其简单，只是单独下载瓦片数据而已（只实现了谷歌卫星地图瓦片数据下载，为了能和dem高程数据对上，下的是无偏移的数据）
 
 * 通过经纬度信息计算tile索引的方法参考自：
-	[Slippy map tilenames](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames)
-	[Google tile和TMS的索引算法](https://www.cnblogs.com/Tangf/archive/2012/04/07/2435545.html)
+	* [Slippy map tilenames](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames)
+	* [Google tile和TMS的索引算法](https://www.cnblogs.com/Tangf/archive/2012/04/07/2435545.html)
 	
 * 瓦片数据体量灰常大，下载之前自己计算准备好足够的磁盘空间，同时也得考虑大量文件个数到时候删除会很头疼的
 
