@@ -345,7 +345,8 @@ namespace WindowsFormsApplication1
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(url + "\t" + ex.Message);
+                        LogHelper.WriteLog(url + "\t" + ex.Message);
+                        //Console.WriteLine(url + "\t" + ex.Message);
                         if (datas[i].d != complateflag)
                         {
                             datas[i].d = errorflag;
