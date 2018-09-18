@@ -30,9 +30,9 @@ namespace WindowsFormsApplication1
 
         Random rd = new Random();
         //谷歌中国卫星地图，有偏移[0123]
-        //string baseurl = "http://mt{3}.google.cn/maps/vt?lyrs=s%40773&hl=zh-CN&gl=CN&x={0}&y={1}&z={2}";
+        string baseurl = "http://mt{3}.google.cn/maps/vt?lyrs=s%40773&hl=zh-CN&gl=CN&x={0}&y={1}&z={2}";
         //谷歌卫星影像，无偏移[0123]
-        string baseurl = "http://khm{3}.google.com/kh/v=762&hl=zh&x={0}&y={1}&z={2}&s=";
+        //string baseurl = "http://khm{3}.google.com/kh/v=762&hl=zh&x={0}&y={1}&z={2}&s=";
         //基础路径
         string basepath = @"F:/osgearth/data/csharp/wuqi/";
         //基础名称
@@ -203,9 +203,9 @@ namespace WindowsFormsApplication1
                         dobj.d = 0;
 
                         listdata.Add(dobj);
-                        if (listdata.Count > 50000)
+                        if (listdata.Count > 500000)
                         {
-                            DBHelper.insertDatas(listdata);
+                            DBHelper.insertDatasNew(listdata);
                             listdata.Clear();
                         }
                     }

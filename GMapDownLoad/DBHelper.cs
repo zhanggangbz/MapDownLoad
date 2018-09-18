@@ -2,6 +2,7 @@
 using CYQ.Data.Table;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 
@@ -50,6 +51,38 @@ namespace WindowsFormsApplication1
 
                 return dt2.AcceptChanges(AcceptOp.InsertWithID);
             }
+        }
+
+
+        public static bool insertDatasNew(List<DiTu_DB> listdata)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(ConnectStr))
+            {
+                conn.Open();
+                SQLiteCommand cmd = new SQLiteCommand();
+                cmd.Connection = conn;
+                SQLiteTransaction tx = conn.BeginTransaction();
+                cmd.Transaction = tx;
+                try
+                {
+                    foreach (DiTu_DB item in listdata)
+                    {
+                        string strsql = item.GetInsertString();
+                        if (strsql.Trim().Length > 1)
+                        {
+                            cmd.CommandText = strsql;
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    tx.Commit();
+                }
+                catch (System.Data.SQLite.SQLiteException E)
+                {
+                    tx.Rollback();
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>

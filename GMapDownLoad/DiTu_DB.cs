@@ -73,5 +73,12 @@ namespace WindowsFormsApplication1
                 _d = value;
             }
         }
+
+        private const String insertSqlTem = "INSERT INTO dt (id,x,y,z) VALUES ({0},{1},{2},{3})";
+
+        public string GetInsertString()
+        {
+            return string.Format(insertSqlTem, id, x, y, z);
+        }
     }
 }
